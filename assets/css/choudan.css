@@ -131,6 +131,15 @@ th {
     float: left;
 }
 
+.section{
+    font-size:90%;
+    line-height: 1.43em;
+    margin-bottom:1.43em;
+    margin-top:1.43em;
+    margin-left:8em;
+    padding-right:3em;
+}
+
 /* class 属性 badge 配合 badge-info 或 badge-inverse 实现不同颜色的标签 */
 .badge {
     display: inline-block;

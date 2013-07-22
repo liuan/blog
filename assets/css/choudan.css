@@ -286,23 +286,68 @@ th {
 
 /* ---------------- 导航条 ---------------------- */
 /*固定导航条nav 配合 nav-fix-top 或 nav-fix-bottom 可固定导航条于顶部或底部*/
-.nav {background-color: #080808; background: rgba(38,38,38,0.85); width: 100%; min-width: 960px;
-  height: 40px; position: fixed; left: 0; _position: relative; z-index: 400;}
-.nav-fix-top {top: 0;}
-.nav-fix-bottom {bottom: 0;display: none;}
+.nav {
+    background-color: #080808;
+    background: rgba(38,38,38,0.85);
+    width: 100%; min-width: 960px;
+    height: 40px;
+    position: fixed;
+    left: 0;
+    _position: relative;
+    z-index: 400;
+}
+
+.nav-fix-top {
+    top: 0;
+}
+
+.nav-fix-bottom {
+    bottom: 0;
+    display: none;
+}
 
 /* 设置导航条宽度为 960px */
-.navbar-panel {color: #333; position: relative; width: 960px; margin: 0 auto;}
+.navbar-panel {
+    color: #333;
+    position: relative;
+    width: 960px;
+    margin: 0 auto;
+}
 
 /* 导航条大标题 */
-.brand {left: 0; position: absolute; top: 7px; margin-left: 10px; font-size: 22px; }
-.brand a{text-decoration: none; color: #f8f8f8;}
+.brand {
+    left: 0;
+    position: absolute;
+    top: 7px;
+    margin-left: 10px;
+    font-size: 22px;
+}
+.brand a{
+    text-decoration: none;
+    color: #f8f8f8;
+}
 
 /* 导航条列表一行显示 */
-.catalog {margin: 10px 0 0;_margin-left: -3px;}
-.catalog ul, .catalog ol{margin:0;}
-.catalog li {display: inline; vertical-align: middle;
-  text-decoration: none;margin: 10px;}
+.catalog {
+    margin: 10px 0 0;
+    _margin-left: -3px;
+}
 
-.catalog li a {text-decoration: none; color: #f8f8f8;}
-.catalog li a:hover { color: rgb(0,185,189);}
+.catalog ul, .catalog ol{
+    margin:0;
+}
+.catalog li {
+    display: inline; 
+    vertical-align: middle;
+    text-decoration: none;
+    margin: 10px;
+}
+
+.catalog li a {
+    text-decoration: none;
+    color: #f8f8f8;
+}
+
+.catalog li a:hover { 
+    color: rgb(0,185,189);
+}

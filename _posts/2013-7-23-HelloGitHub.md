@@ -1,6 +1,6 @@
 ---
 layout: post
-cateory: 杂文
+category: 杂文
 tags: 杂文
 ---
 

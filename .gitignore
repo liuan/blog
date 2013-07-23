@@ -1,0 +1,4 @@
+# ignore the _site directory
+
+_site
+_site/*

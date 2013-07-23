@@ -1,3 +1,4 @@
+auto: true
 permalink: /:year/:month/:day.html
 markdown: redcarpet
 

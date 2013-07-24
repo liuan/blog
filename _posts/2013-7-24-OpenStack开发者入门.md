@@ -13,17 +13,20 @@ tags: Openstack
 
 有了上面两项之后，就需要了解openstack管理源码的工具-git和用来code review的工具 gerrit。
 
+
 ##### Git
 
 Git在网上有很多介绍资料！
 
 ##### Gerrit
 
+
 Gerrit是代码审核服务器，向git仓库推送的代码必须经过Gerrit服务器，然后需要经过全面的测试和审核才可以合并到版本库中对应的分支。了解Gerrit的工作原理，[可以点这](http://www.worldhello.net/2010/11/10/2059.html)。从这个链接借过来一张Android代码审核得流程图，因为这张图特别详细，可以从中清楚无比得了解到Gerrit的整个工作过程。
 
 ![Gerrit_workflow_for_android](/assets/img/gerrit-workflow.png)
 
 ###### Openstack Gerrit Contribution Workflow
+
 
 OpenStack大体上和上面一样，过程更简洁，中间还使用拉Jenkins来完成自动化测试。
 
@@ -41,7 +44,9 @@ OpenStack大体上和上面一样，过程更简洁，中间还使用拉Jenkins�
 
 至此，整个本地的git仓库就建立起来了，为加入到开源社区开发铺平了道路。
 
+
 #### Fix Bug
+
 
 个人感觉，新手入门，应该都是从修复Bug开始，之前在捣鼓OpenStack的过程中，遇到几个小Bug，自己本地fix掉，但还是没了解到社区fix bug得严谨过程。下面就尝试介绍下整个流程，如果有更加理解整个过程的，欢迎补充或者修正我描述中得错误。
 

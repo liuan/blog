@@ -23,14 +23,14 @@ Git在网上有很多介绍资料！
 
 Gerrit是代码审核服务器，向git仓库推送的代码必须经过Gerrit服务器，然后需要经过全面的测试和审核才可以合并到版本库中对应的分支。了解Gerrit的工作原理，[可以点这](http://www.worldhello.net/2010/11/10/2059.html)。从这个链接借过来一张Android代码审核得流程图，因为这张图特别详细，可以从中清楚无比得了解到Gerrit的整个工作过程。
 
-![Gerrit_workflow_for_android](/assets/img/gerrit-workflow.png)
+<img src="/assets/img/gerrit-workflow.png" atl="Gerrit Workflow for android" width="700px"/>
 
 ###### Openstack Gerrit Contribution Workflow
 
 
 OpenStack大体上和上面一样，过程更简洁，中间还使用拉Jenkins来完成自动化测试。
 
-![OpenStack_Workflow](/assets/img/openstack_gerrit_Contribution_path.png)
+<img src="/assets/img/openstack_gerrit_Contribution_path.png" alt="OpenStack Gerrit Workflow" width="700px"/>
 
 了解到上面这些基本的信息之后，还需要进行下面得一系列配置，才可以参与到此过程来。
 

@@ -6,6 +6,10 @@ tags: Openstack
 
 ### OpenStack开发者入门
  
+
+更新： 突然发现网上还是不少介绍如何向OpenStack贡献代码的文章,例如，[这篇文章](http://www.ibm.com/developerworks/cn/cloud/library/cl-contributecode-openstack/)
+
+
 开发OpenStack有一段时间了，由于一直比较忙没有认真查看如何加入到开源社区参与开发,最近深受程辉大哥在[UnitedStack](http://www.ustack.com/unitedstack-need-opensource-engineer)上文章得影响，决定先摸清如何参与开源社区开发，感受开源社区分布式协作开发和巨神们coding的魅力，故特意在网上查了资料，直接指导的很少，还得的靠[官网上的文档](http://www.openstack.org/assets/welcome-guide/OpenStackWelcomeGuide.pdf)。当然，还有一篇Rackspace的Michael Still大牛对这个问题做了统一回答。[Getting Started With Openstack Development](http://www.stillhq.com/openstack/20130416-summit.pdf)。
 
 1.  加入的前提是需要有一个Launchpad.net的账号，注册就OK了。

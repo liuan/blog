@@ -1,5 +1,5 @@
 auto: true
-permalink: /:year/:month/:day.html
+permalink: /:year/:month/:day/:title.html
 markdown: redcarpet
 
 redcarpet:

@@ -15,7 +15,7 @@ description: （序列三）:主要分析OpenStack Nova中对RabbitMQ的运用
 
 在nova服务启动的过程中，会有如下一些与rpc相关的代码，具体截图如下。
 
-<img src="/assets/img/OpenStack_rabbit_code.png" atl="OpenStackRabbitMQCode01">
+<img src="/assets/img/OpenStack_rabbit_code.png" atl="OpenStackRabbitMQCode01" width="700px">
 
 这八行代码就是我们敲开rpc实现的入口。这六行代码分为三个步骤，一个是创建一个与RabbitMQ Server的连接；一个是rpc_dispatcher，简单的理解是一个callback函数；一个是创建消费者，典型的队列中的生产者和消费者模式。
 
@@ -35,7 +35,7 @@ description: （序列三）:主要分析OpenStack Nova中对RabbitMQ的运用
 
 从前面我们已经知道self.manager是nova.compute.manager.ComputeManager的实例。
 
-<img src="/assets/img/OpenStack_rabbit_manager.png" atl="OpenStackRabbitMQManager" width="700px">
+<img src="/assets/img/OpenStack_rabbit_Manager.png" atl="OpenStackRabbitMQManager" width="700px">
 
 上图是manager相关类的关系图，细看这些关系，ComputeManager继承于manager，调用manager的create_rpc_dispatcher会返回一个RpcDispatcher的实例，该实例的存在一个callbacks的列表，这个callbacks存在一个元素就是manager这个实例。RpcDispatcher类还存在一个dispatch方法，该方法会调用msg指定的函数，这个函数是manager实例的一个方法。
 

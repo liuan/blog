@@ -13,7 +13,7 @@ Nova在RabbitMQ的基础上实现了RPC（两种形式：一，request+reponse,�
 
 每个nova服务都会连接到rabbitmq server来，创建两个消息队列，创建两个Topic consumer. 依赖于服务自身的特点，服务可能使用这个队列作为调用者或者作为工作者。服务作为调用者可以使用rpc.call或者rpc.cast来发送消息到队列，作为工作者，从队列接收消息处理，若是rpc.call则返回response。
 
-![OpenStack_RabbitMQNode](assets/img/OpenStack_RabbitMQ.png)
+![OpenStack_RabbitMQNode](assets/img/OpenStack_RabbitMQNode.png)
 
 补充，在上图中，name:control_exchange，在nova中，该control_exchange的值是nova，type为topic。
 上图显示了一个rpc.call的过程。其中存在多个概念：
@@ -31,7 +31,7 @@ Nova在RabbitMQ的基础上实现了RPC（两种形式：一，request+reponse,�
 
 下图是rpc.cast的过程，与rpc.call相比，差别在于消息经过的队列是key为topic的共享队列，没有返回结果，过程相较简单多了。
 
-![OpenStack_RabbitMQNode2](assets/img/OpenStack_RabbitMQ2.png)
+![OpenStack_RabbitMQNode2](assets/img/OpenStack_RabbitMQNode2.png)
 
 Nova使用Kombu来连接RabbitMQ server。Kombu是一个Python库，实现了标准的AMQP 0.8版的协议。当使用Kombu时，调用者和工作者都需要一些参数来初始化对RabbitMQ Server 的连接对象。Hostname，userid，password，virtual_host，port
 除了上面一些，还有三个默认变量：

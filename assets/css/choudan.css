@@ -155,7 +155,7 @@ th {
 }
 
 .section li{
-    margin-left:10px;
+    margin-left:6px;
     margin-top:5px;
 }
 /* class 属性 badge 配合 badge-info 或 badge-inverse 实现不同颜色的标签 */

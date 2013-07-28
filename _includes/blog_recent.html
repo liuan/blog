@@ -1,5 +1,7 @@
 <div class="topic well-header">
   <h3>最近文章：</h3>
+    <span>文章总计： {{ site.posts | size }} 篇</span>
+    <span class="pull-right">最后更新时间：{{ site.time | date: "%Y年%m月%d日" }}</span>
   <ul>
   {% for post in site.posts limit:5 %}
     <li>{{ post.date | date: "%Y-%m-%d" }} »»» <a href="{{ post.url }}">{{ post.title }}</a></li>

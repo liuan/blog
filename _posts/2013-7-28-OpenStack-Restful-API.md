@@ -19,11 +19,11 @@ Rest即`Representational State Transfer`,中文大家翻译成表述性状态转
 
 * 资源：在Restful的角度看来，Web上的所有东西本质上都是资源，例如一张照片，一条记录等等，每个资源都使用URI得到唯一的地址。对于资源，可以使用四个HTTP动词来操作,GET POST DELETE PUT。使用HTTP这四个动词就可以很好的处理应用程序需求，如CRUD操作。
 
-<img src=""/>
+<img src="/assets/img/openstack_restful_api.png" width="700px"/>
 
 举一个具体的例子来展示到底是如何利用HTTP 头中的这四个动词来完成CRUD操作。
 
-<img src=""/>
+<img src="/assets/img/openstack_restful_api_01.png" width="700px"/>
 
 需要深刻的理解这两点,尤其是资源两字,精髓所在，然后再看OpenStack中的API设计就更加清晰明了。
 
@@ -35,12 +35,28 @@ Rest即`Representational State Transfer`,中文大家翻译成表述性状态转
 
 这就要了解Python 中的Routes模块。
 
-[Routes](http://routes.readthedocs.org/en/latest/introduction.html) 是一个python重新实现的Rails routes system，用来将urls映射到应用具体的action上，相反的，还生成url。由于Routes是Rails routes system的python实现，故从rails的restful入手，能很好的理解Routes库。
+[Routes](http://routes.readthedocs.org/en/latest/introduction.html) 是一个python重新实现的Rails routes system，用来将urls映射到应用具体的action上，相反的，还生成url。由于Routes是Rails routes system的python实现，并且网上关于Routes的文档很少，故从rails的routes system入手，就能很好的理解Routes库了。
 
 首先看一个简单的例子，就明白routes的作用，
 
 > 例如浏览器接收到下面的HTTP请求，
 > GET /instances/1
-> Raisl的路由请求则负责将此请求解析后dispatch来代码中的具体某个函数，完成调用，例如返回虚拟机的信息。
+> Rails的路由请求则负责将此请求解析后dispatch来代码中的具体某个函数，完成调用，例如返回虚拟机的信息。
 
-### OpenStack Restful API
+### Rails Routes
+
+[下面的内容参考于此处](http://guides.ruby-china.org/routing.html)。
+
+Rails支持多种URL路径，包括RESTful路径，命名路径，嵌套路径，常规路径等，其中RESTful路径是Rails默认的标准路由方式)。
+
+* RESTful路径:前面我们多次强调关键在于理解在restful的角度来看，web上的所有东西本质上是资源。前面也的图片也提到了将photos视为一种资源，结合HTTP动词和RESTful URL之后，路由引擎将URL映射到相应的Controller上去，然后调用对应的函数做处理。
+
+* 嵌套路径：可以在一个resource中包含另一个resource。
+
+其他路径的解释参考上面给出的链接。
+
+### OpenStack API
+
+在分析OpenStack API的过程，发现这一部分的内容太多，改到下一篇文章中.
+
+

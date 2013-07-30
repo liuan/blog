@@ -16,15 +16,21 @@ tags: OpenStack
 在paste deploy一文中已经知道了，Nova API的启动最终会运行到APIRouter class的构造方法中来，由该方法发散出去，就完成了整个wsgi service的启动，从整个service的角度来看，该方法就做了下面几件事。
 
 1.  创建一个ExtensionManager，用来加载所有的extension
+
 2.  调用routes的Mapper.resource方法完成对核心资源的定义，将资源与路由关联起来
+
 3.  同样调用上面的方法完成对扩展资源的定义，也将他们与路由关联起来
+
 4.  
 
 Nova API service 接收到HTTP请求之后，处理过程主要分为四个阶段:
 
 1. 首先通过WSGI Server将HTTP request封装成wsgi request 
+
 2. 使用api-paste.ini文件中定义的Filter对wsgi request进行处理
+
 3. 处理完毕后，就根据mapper中的记录，将不同的请求路由到不同的WSGI APP。
+
 4. WSGI APP接收到请求之后，并将请求disptach到controller中的方法上
 
 以上并是Nova API加载各种API的定义和处理HTTP请求的过程，描述的很抽象，里面存在几个关键的概念，ExtensionManager,extension,WSGI APP, controller,core resource。前面的文章提到过，其中一个很关键的概念是资源，资源具有一个controller，该controller包含一系列的基本方法，例如index，create，show，delete等等基本的CRUD操作。显然，这些操作还不够，需要对它进行扩展来满足丰富的API接口设计。就了后面提到的ExtensionResource，ExtensionController等等概念。下面一一分析。

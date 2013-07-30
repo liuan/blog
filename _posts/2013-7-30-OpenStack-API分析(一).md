@@ -33,20 +33,20 @@ Nova API service 接收到HTTP请求之后，处理过程主要分为四个阶�
 
 APIRouter Class的第一件事，并是创建ExtensionManager,然后用它来加载各种extension。
 
-<img src="openstack_novaapi_extensions01.png" width="700px"/>
+<img src="/assets/img/openstack_novaapi_extensions01.png" width="700px"/>
 
 上面描述了ExtensionManager的类继承关系和部分功能，其中关键的函数_load_extensions会调用load_standard_extensions方法，该方法并遍历`contrib目录`，该目录便是存放所有extension的地方，下面举了以Keyparis为例，load_standard_extensions函数将会做哪些工作。
 
-<img src="openstack_novaapi_extensions02.png" width="700px"/>
+<img src="/assets/img/openstack_novaapi_extensions02.png" width="700px"/>
 
 最终load_standard_extensions将contrib目录下的所有extension注册到ExtensionManager中，并且是使用的extension的alias(http request中使用到，必须保证它的唯一性，则样就可以根据http请求，知道是查找哪个extension的controller)。上面这张图也告诉我们如果要实现自己定义的extension就必须定义四个变量name,alias，namespace,updated，并且按情况是决定是否需要冲在get_resource和get_controller_extensions函数，如果需要定义新的Restful资源，这我们需要实现get_resource函数，如果要扩展一个存在的Restful资源的controller,我们需要实现get_controller_exntension函数。例如，Keypairs重新定义了新的keypairs资源，也扩展了servers的controller，所以重新实现了这两个函数。
 
 第二三步均是mapper.resource，第一次是core resource的定义，第二次是extension的定义。
 
-<img src="openstack_novaapi_extensions03.png" width="700px"/>
+<img src="/assets/img/openstack_novaapi_extensions03.png" width="700px"/>
 
 此处使用的就像前面文中提到的Rails routes中的用法。
 
-<img src="openstack_novaapi_extensions04.png" width="700px"/>
+<img src="/assets/img/openstack_novaapi_extensions04.png" width="700px"/>
 
 ### Handle HTTP Request

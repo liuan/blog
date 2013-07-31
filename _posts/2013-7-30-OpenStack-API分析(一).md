@@ -6,20 +6,22 @@ tags: OpenStack
 
 ### 前言
 
-前面一篇文章简单混乱的介绍了[OpenStack Restful API](http://www.choudan.net/2013/07/28/OpenStack-Restful-API.html),可以了解到OpenStack 中API的设计方式，还有一篇文章详细全面的介绍了[Nova API的启动](http://www.choudan.net/2013/07/28/OpenStack-paste-deploy介绍.html),这篇文章只描述了服务是如何一步步运行起来的，侧重在WSGI Application使用paste deploy模块的方式，正在起来之后再怎样处各种http 请求就没有介绍了。
+前面一篇文章简单混乱的介绍了[OpenStack Restful API](http://www.choudan.net/2013/07/28/OpenStack-Restful-API.html),可以了解到OpenStack 中API的设计方式，还有一篇文章详细全面的介绍了[Nova API的启动](http://www.choudan.net/2013/07/28/OpenStack-paste-deploy介绍.html),这篇文章只描述了服务是如何一步步运行起来的，侧重在WSGI Server使用paste deploy模块的方式，Server起来之后再怎样处理各种http 请求就没有介绍了。
 
-这一篇文章就重点介绍，Nova-api服务是如何处理外界的API调用请求的，如果需要添加API，到底要怎样做。
+这一篇文章就重点介绍，OpenStack Nova中是如何定义各种API的，怎样完成HTTP Request最终路由到具体的某个函数调用上的。
 
 
-### Nova API
+### 概念
 
-在paste deploy一文中已经知道了，Nova API的启动最终会运行到APIRouter class的构造方法中来，由该方法发散出去，就完成了整个wsgi service的启动，从整个service的角度来看，该方法就做了下面几件事。
+在paste deploy一文中已经知道了，Nova API的启动最终会运行到APIRouter class的构造函数中来，由该函数发散出去，就完成了整个Nova API的启动，该构造函数主要做了下面几件事。
 
-1.  创建一个ExtensionManager，用来加载所有的extension
+1.  创建一个ExtensionManager，用来加载所有的扩展资源(extension)。
 
-2.  调用routes的Mapper.resource方法完成对核心资源的定义，将资源与路由关联起来
+2.  调用routes的Mapper.resource方法完成对核心资源的定义，将资源与路由关联起来。
 
-3.  同样调用上面的方法完成对扩展资源的定义，也将他们与路由关联起来
+3.  同样调用上面的方法完成对扩展资源的定义，也将他们与路由关联起来。
+
+4.  将扩展资源对核心资源扩展的action或extends注册，其实action,extends就是该资源的某个方法)
 
 
 Nova API service 接收到HTTP请求之后，处理过程主要分为四个阶段:
@@ -32,26 +34,23 @@ Nova API service 接收到HTTP请求之后，处理过程主要分为四个阶�
 
 4. WSGI APP接收到请求之后，并将请求disptach到controller中的方法上
 
-以上并是Nova API加载各种API的定义和处理HTTP请求的过程，描述的很抽象，里面存在几个关键的概念，ExtensionManager,extension,WSGI APP, controller,core resource。前面的文章提到过，其中一个很关键的概念是资源，资源具有一个controller，该controller包含一系列的基本方法，例如index，create，show，delete等等基本的CRUD操作。显然，这些操作还不够，需要对它进行扩展来满足丰富的API接口设计。就了后面提到的ExtensionResource，ExtensionController等等概念。下面一一分析。
+如果没有仔细阅读源码或者没了解Restful中强调的资源，可能就对上面提到的杂乱概念毫无头绪。下面就列出一些关键概念，帮助理解。前面多次强调，Restful中，一切都是围绕资源进行操作。OpenStack就定义了两种类型的资源。
 
-### Extension Load
+*  core resource: 核心资源，我们可以在`./nova/api/openstack/compute/`目录下面看到servers.py, ips.py,images.py等等文件，它们就是核心资源,可以看出这些资源是云平台的最基础的东西。
 
-APIRouter Class的第一件事，并是创建ExtensionManager,然后用它来加载各种extension。
+*  extension resource: 扩展资源，在`./nova/api/openstack/compute/contrib/`目录下面有很多文件，这些都是扩展资源，非核心的，例如keypairs.py等等，扩展资源又分为两种情况：1. 扩展资源本身也是一种资源，只是没那么核心，2. 扩展资源是对核心资源的扩展丰富，例如keypairs就扩展了servers核心资源；当然扩展资源也可以同时具备这两种情况。
 
-<img src="/assets/img/openstack_novaapi_extensions01.png" width="700px"/>
+了解所谓的资源之后，我们还需要了解controller，所谓的controller实际上就是代表对该资源的操作集合，controller中定义了很多的操作，有基本的CRUD操作，还有其他杂七杂八满足我们功能需要的操作，这些操作大致上也可以分为三类：
 
-上面描述了ExtensionManager的类继承关系和部分功能，其中关键的函数_load_extensions会调用load_standard_extensions方法，该方法并遍历`contrib目录`，该目录便是存放所有extension的地方，下面举了以Keyparis为例，load_standard_extensions函数将会做哪些工作。
+*  CRUD: 最基本的操作，对资源的index，create，delete,show,update。
 
-<img src="/assets/img/openstack_novaapi_extensions02.png" width="700px"/>
+*  action: 基本操作不可能满足所有对资源的操作，若要增加，则使用@wsgi.action装饰
 
-最终load_standard_extensions将contrib目录下的所有extension注册到ExtensionManager中，并且是使用的extension的alias(http request中使用到，必须保证它的唯一性，则样就可以根据http请求，知道是查找哪个extension的controller)。上面这张图也告诉我们如果要实现自己定义的extension就必须定义四个变量name,alias，namespace,updated，并且按情况是决定是否需要冲在get_resource和get_controller_extensions函数，如果需要定义新的Restful资源，这我们需要实现get_resource函数，如果要扩展一个存在的Restful资源的controller,我们需要实现get_controller_exntension函数。例如，Keypairs重新定义了新的keypairs资源，也扩展了servers的controller，所以重新实现了这两个函数。
+*  extends: 使用来@wsgi.extends装饰了的函数，如果扩展资源扩展某个核心资源，扩展资源增加的函数就会添加这个装饰
 
-第二三步均是mapper.resource，第一次是core resource的定义，第二次是extension的定义。
+下一个需要了解的概念便是WSGI APP，在OpenStack中，定义了很多的资源，每个资源有一些操作函数，最终，这每一个资源组成了一个单一的WSGI APP，这就说明了，一个WSGI Server可以对应多个WSGI APP，这样保证了资源之间的独立性。
 
-<img src="/assets/img/openstack_novaapi_extensions03.png" width="700px"/>
+最后一个是，ExtensionManager,存在这么多的资源，需要使用一个较好的方式对他们进行管理，能够方便的为后期添加更多的资源，丰富OpenStack的API。这样就出现了ExensionManager，对这些扩展资源进行统一的管理。
 
-此处使用的就像前面文中提到的Rails routes中的用法。
+有了这些基本的概念之后，再回过头来看前面的流程，应该是更加清晰了。下一篇，就使用代码来分析这些文章提到的内容。
 
-<img src="/assets/img/openstack_novaapi_extensions04.png" width="700px"/>
-
-### Handle HTTP Request

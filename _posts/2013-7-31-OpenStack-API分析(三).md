@@ -46,7 +46,7 @@ tags: OpenStack
 
 OpenStack API的框架设计的很灵活，可以很方便灵活的添加api，扩展功能，参考它的实现方式，可以学习到该如何优雅的实现一套API接口。关于HTTP request，抽象的带过了，其中还有很多知识值得学习，例如，在filter层，可以进行身份权限验证，API请求流量控制,Debug开关等等，使用paste deploy来开发WSGI Server确实很灵活很方便，只需要简单的更改paste.ini文件就可以，如果想做一个日志统计，也可以想filter一样，添加一层。
 
-如果理解了Restful所谓的对资源定义，就能够明白你哪些URL，其中的Resource，Extension等等，并且这些概念这OpenStack的其他service中也是一样，在python-****client中同样也存在这样的概念，方便来补充功能。
+如果理解了Restful所谓的对资源定义，就能够明白你哪些URL，其中的Resource，Extension等等，并且这些概念这OpenStack的其他service中也是一样，在python-\*\*\*\*client中同样也存在这样的概念，方便来补充功能。
 
 理解了HTTP 请求的处理，再加上前面分析的RPC机制，这样就理清除了OpenStack中间的两大通信方式，把底层的基础扫清除了，为后面更好的关注于OpenStack的功能和云平台的设计奠定基础。
 

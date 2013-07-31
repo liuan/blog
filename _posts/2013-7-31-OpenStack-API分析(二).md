@@ -42,3 +42,9 @@ APIRouter Class的第一件事，并是创建ExtensionManager,然后用它来加
 <img src="/assets/img/openstack_novaapi_extensions07.png" width="700px"/>
 
 每个WSGI APP必需继承自Application类，然后实现__call__方法，在该__call__方法中，并根据http请求的URL,映射到controller上的对应的方法。
+
+查看一个具体的例子，例如`nova keypair-list`。
+
+<img src="/assets/img/openstack_novaapi_extensions08.png" width="700px"/>
+
+可以看到该api的相对url为`/os-keypairs`,nova-api接收到请求之后，会根据os-keypairs关键字，将其分发到collection为os-keypairs的WSGI APP，然后该APP完成最终的函数调用。

@@ -43,7 +43,7 @@ Horizon作为Openstack的Dashboard模块，使用Django框架来开发的，对�
 
 ######  TileView
 
-在dashborad中，我们看见很多这样的forms，panels,tables等等，现在需要设计自己的TileView，这需要写个类似于forms这样的view类。下面便是TileView的实现，可以看出，继承该类都需要指定一个具体的tile_class类，通过get_tile函数完成tile_class类的实例化。Get_context_data函数获取了该tile_class对象，保存在context中，这样可以在View的html template中完成对context的特定数据访问，例如访问`{{tile.render}}`。
+在dashborad中，我们看见很多这样的forms，panels,tables等等，现在需要设计自己的TileView，这需要写个类似于forms这样的view类。下面便是TileView的实现，可以看出，继承该类都需要指定一个具体的tile_class类，通过get_tile函数完成tile_class类的实例化。Get_context_data函数获取了该tile_class对象，保存在context中，这样可以在View的html template中完成对context的特定数据访问，例如访问`\{\{tile.render\}\}`。
 另外一个是获取view得到的数据，将该数据传递给Tile实例。
 通过_get_data_dict函数，将获取的数据传递进来，然后简单的保存到tile._data中，最后Django框架会调用关键的函数get，来完成页面的响应。
 

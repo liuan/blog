@@ -58,7 +58,7 @@ Horizon作为Openstack的Dashboard模块，使用Django框架来开发的，对�
 
 <img src="/assets/img/openstack_dashboard.png" width="700px">
 
-###### 
+###### 跳转
 
 除了界面的生成之外，另外一个重要的问题是，如何处理页面url的跳转，参数的传递。在table页面中，一个url参数的传递由三部分在组成，下面一一介绍。
 首先是url，观察urls.py文件，内容如下图，可以看到url的格式，名字是detail，这个链接将由HostIndexView来处理，链接有一个匹配的正则表达式。注意其中传递了一个host参数。获取该host值得方式是，self.kwargs[‘host’]

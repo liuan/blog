@@ -28,18 +28,16 @@ Horizon作为Openstack的Dashboard模块，使用Django框架来开发的，对�
 
 <img src="/assets/img/openstack_dashboard02.png" width="700px">
 
-<img src="/assets/img/openstack_dashboard03.png" width="700px">
-
 ###### views
 
 再次是views.py，该模块主要是完成页面的简单逻辑，关联一个具体的TestTile对象，用来处理数据。可以重载TileView中的get_context_data，丰富context内容，能够在页面上访问获取的context中的数据。get_data方法，可以调用api，获取想要显示的数据，将该数据在传至到TestTile对象。
 
-<img src="/assets/img/openstack_dashboard04.png" width="700px">
+<img src="/assets/img/openstack_dashboard03.png" width="700px">
 
 ###### TestTile
 下面是TestTile类，简单的继承于tiles.Tile
 
-<img src="/assets/img/openstack_dashboard05.png" width="700px">
+<img src="/assets/img/openstack_dashboard04.png" width="700px">
 
 ######  TileView
 
@@ -47,6 +45,7 @@ Horizon作为Openstack的Dashboard模块，使用Django框架来开发的，对�
 另外一个是获取view得到的数据，将该数据传递给Tile实例。
 通过_get_data_dict函数，将获取的数据传递进来，然后简单的保存到tile._data中，最后Django框架会调用关键的函数get，来完成页面的响应。
 
+<img src="/assets/img/openstack_dashboard05.png" width="700px">
 <img src="/assets/img/openstack_dashboard06.png" width="700px">
 
 ###### Tile

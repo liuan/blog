@@ -12,7 +12,7 @@ tags: OpenStack
 
 下面的内容还不够完善，会在后续自己经验丰富之后，渐渐补充！
 
-接着上一篇[OpenStack开发者入门一](http://www.choudan.net/2013-07-24-OpenStack开发者入门%28一%29.html)的内容,上一篇讲了一个轮廓，若要成为一名OpenStack社区开发者需要做哪些前提工作，然后是OpenStack采取的gerrit的工作方式,将project source code下载到本地来，准备好git review环境。这一篇，就详细描述report Bug,assign Bug, commit Patch的过程。
+接着上一篇[OpenStack开发者入门一](http://www.choudan.net/2013/07/24/OpenStack开发者入门%28一%29.html)的内容,上一篇讲了一个轮廓，若要成为一名OpenStack社区开发者需要做哪些前提工作，然后是OpenStack采取的gerrit的工作方式,将project source code下载到本地来，准备好git review环境。这一篇，就详细描述report Bug,assign Bug, commit Patch的过程。
 
 ### Assign Bug
 

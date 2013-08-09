@@ -43,7 +43,7 @@ tags: OpenStack
 > 4.运行ctrl+o命令，然后按下Enter键，然后运行ctrl+x.
 > 5.git review
 
-对于第三处，初次尝试的可能会产生困惑，有的文章描述注释部分需要添加change-Id，这个change-Id是commit之后才有的，第一次提交不需要填写change-Id,下面是我初次提交的注释内容，给大家截个图，作为参考！其中的change-Id是系统自动添加的。
+对于第三处，初次尝试的可能会产生困惑，有的文章描述注释部分需要添加change-Id，这个change-Id是commit之后才有的，第一次提交不需要填写change-Id,下面是我初次提交的注释内容，给大家截个图，作为参考！其中的change-Id是系统自动添加的。*其中的注释方式，内容太简陋了，没有通过review，将再次修改的方式补充后文章尾。*
 
 <img src="/assets/img/openstack_develop_gitreview02.png" width="700px"/>
 
@@ -60,3 +60,13 @@ tags: OpenStack
 ### 总结
 
 我提交的第一个bug很简单，只需要修改一行代码，平时也不会影响到系统的正常运行，但是还是一个隐患。很快jenkins完成了build，然后再等待code-review和Approved。后续若有更加全面的经验，再补充过来！
+
+第一次review没有通过，并且给出了一个意见，要我[参考openstack wiki如何写好git commit message](https://wiki.openstack.org/wiki/GitCommitMessages#Information_in_commit_messages)。之所以没有通过是commit message写的太简陋了，无法准确的表述解决的问题，所以我重新提交了commit message!
+
+> 1.确保当前代码是最新的，git fetch origin master
+> 2.git rebase FETCH_HEAD
+> 3.git add.
+> 4.git commit --amend，然后重新编写commit messages，上面的wiki给出了详细的描述
+> 5.git review
+
+其中在执行git commit --amend之后，就会出现之前commit 的messages，末尾已经添加了change-Id，只需要专注于把messages写清晰就好！老外做事真是够严谨！不得不佩服！

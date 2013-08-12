@@ -8,6 +8,8 @@ tags: OpenStack
 
 这一篇主要介绍最基本的Small Test,我理解其实是单元测试，内容主要翻译于[OpenStack WiKi SmallTests](https://wiki.openstack.org/wiki/SmallTestingGuide)，再结合我一些我的理解。
 
+补充：今天在OpenStack的wiki上在看到[一篇综合性介绍test的文章](https://wiki.openstack.org/wiki/TestGuide)，其中讲到关于测试，有很多术语，例如单元测试，功能测试，集成测试等等，有些不同的术语是同样的意思，为了避免混乱，就直接使用了Small Test, Medium Test, Large Test来代替，其中下面提到的Small Test便是单元测试。在文章后把单元测试的一些要点再总结下。
+
 ### Small Tests
 
 Small Tests是开发者用的最频繁的测试方法，是和源代码捆绑的最紧的测试方法了，测试粒度十分细，如果测试用例测试失败，可以迅速的定位出错的位置。以Nova为例，在nova的源码下面，有个nova/tests/目录，里面全都是各个测试用例，十分全面和细致，基本针对每个函数都有测试用例。
@@ -243,6 +245,16 @@ Moneky Patching 利用了python语言的动态性优点来修改全局的命名�
 然而，基于monkey patching的测试用例通常更加脆弱，因为他们倾向于依赖SUT的实现细节。依赖monkey patches同样鼓励了不好的设计，因为她加强了这样的观念，就是SUT 完全自由的依赖于任何在全局命令空间可用的东西。鼓励依赖就会导致加紧系统的耦合度，导致系统很难重用和改变。
 
 ### 总结
+
+Small Test即单元测试，讲究的就是一个迅速，最大化的隔离和可移植，这样才能帮开发者迅速的诊断问题所在。其中对于速度，有以下几点得注意：
+
+> 1.不和数据库交互
+> 2.不和文件系统交互
+> 3.不和网络通信
+
+上面这三点都会导致测试变慢。
+
+Small Test的测试粒度是最小的，这样确保了一旦测试失败，开发者就容易并且迅速的找到问题源。另一点是Small Tests能够让任何开发者都能够去运行，就是它不需要依赖于特定的硬件资源。
 
 这篇wiki总的来说是介绍了openstack中使用的单元测试用到的理论和实现方法，由于初次接触，理解不够，可能其中部分内容翻译不准确，有误，希望大家指出，加以改正。同时文章的前面给出了链接。这而还有一篇牛人写的博客，[介绍如何测试API的](http://blog.csdn.net/quqi99/article/details/8533071)。
 

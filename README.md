@@ -1,4 +1,4 @@
 choudan
 =======
 
-All my personal project and blog
+My personal BLOG. There are some blogs about openstack. 

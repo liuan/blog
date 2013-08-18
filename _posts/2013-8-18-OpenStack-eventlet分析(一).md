@@ -154,7 +154,7 @@ wait方法调用了Event实例的wait方法,就是在这个wait函数中，调�
 
 Timer对象重载了__call__方法，所以可以直接调用了，timer被调用之后，我们前面知道，传递进来的是g.switch，在timer中就是调用了该switch函数，直接触动了greenthread的执行，此时，我们自定义的函数就可以被执行了。
 
-我们知道，如果我们自定义的函数要运行时间很长，怎么办，其他的greenthread则没有机会去运行了，在[openstack nova官方文档中介绍thread]()中也提到这个问题，此时我们需要在自己定义的函数中调用`greenthread.sleep(0)`函数，来进行切换，使其他的greenthread也能被调度运行。看看greenthread.sleep函数的代码。
+我们知道，如果我们自定义的函数要运行时间很长，怎么办，其他的greenthread则没有机会去运行了，在[openstack nova官方文档中介绍thread](http://docs.openstack.org/developer/nova/devref/threading.html)中也提到这个问题，此时我们需要在自己定义的函数中调用`greenthread.sleep(0)`函数，来进行切换，使其他的greenthread也能被调度运行。看看greenthread.sleep函数的代码。
 
 
     def sleep(seconds=0):

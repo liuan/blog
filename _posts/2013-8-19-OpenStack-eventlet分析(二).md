@@ -4,7 +4,7 @@ category: OpenStack
 tags: eventlet
 ---
 
-上一篇博客[OpenStack-Eventlet分析(一)](http://www.choudan.net/2013/08/19/OpenStack-eventlet分析%28一%29.html)以eventlet库中的spawn函数为代表，详细的介绍了spawn函数的运行过程。最终的重点是在hubs用来进行调度的一面，而hubs关于网络的一面还没有涉及。然而，上一篇只专注于每一行代码的执行流程了，而没有eventlet用来调度greenthread的框架分析，这样容易导致阅读源码会出现的一个常见问题，只见树木不见树林。所以在这一篇，再详细分析eventlet用来调度greenthread的框架问题，下次再将其网络部分补齐，构成一个整体。
+上一篇博客[OpenStack-Eventlet分析(一)](http://www.choudan.net/2013/08/18/OpenStack-eventlet分析%28一%29.html)以eventlet库中的spawn函数为代表，详细的介绍了spawn函数的运行过程。最终的重点是在hubs用来进行调度的一面，而hubs关于网络的一面还没有涉及。然而，上一篇只专注于每一行代码的执行流程了，而没有eventlet用来调度greenthread的框架分析，这样容易导致阅读源码会出现的一个常见问题，只见树木不见树林。所以在这一篇，再详细分析eventlet用来调度greenthread的框架问题，下次再将其网络部分补齐，构成一个整体。
 
 首先来看一个例子。
 

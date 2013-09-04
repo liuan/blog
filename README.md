@@ -8,10 +8,10 @@
 
 ### future
 
-* 1. I want to show more valuable articles on my blog, especailly some works of myself.
+* 1. I want to show more valuable articles on my blog, especially some works of myself.
 * 2. Making this site more easy to get what you want!
 
 ### Contact Me
 
-Any problem, feel free to contact me. Email: liuanaqi@gmail.com
+Any problems, feel free to contact me. Email: liuanaqi@gmail.com
 

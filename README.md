@@ -1,6 +1,17 @@
-# 臭蛋
+# choudan
 
-### 实现功能
+### contents
 
-> 使用博客主题，转载博客文章请遵守[CC BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/cn/) 协议
+* 1. Most articles of this blog is about OpenStack! Recording the knowledges I work with OpenStack and at the same time sharing with others. 
+
+* 2. A small part of this blog is about algorithms. 
+
+### future
+
+* 1. I want to show more valuable articles on my blog, especailly some works of myself.
+* 2. Making this site more easy to get what you want!
+
+### Contact Me
+
+Any problem, feel free to contact me. Email: liuanaqi@gmail.com
 

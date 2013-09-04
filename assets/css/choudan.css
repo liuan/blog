@@ -326,7 +326,7 @@ th {
 }
 
 .nav-fix-top {
-    top: 0;
+    top: -10px;
 }
 
 .nav-fix-bottom {
@@ -348,6 +348,7 @@ th {
     position: absolute;
     top: 7px;
     margin-left: 10px;
+    margin-top: -5px;
     font-size: 22px;
 }
 .brand a{

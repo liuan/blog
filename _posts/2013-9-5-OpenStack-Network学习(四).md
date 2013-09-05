@@ -9,7 +9,7 @@ description: 介绍Linux Bridge部署中的问题
 
 ### LinuxBridge
 
-在使用LinuxBridge作为quantum的插件，实现VLAN，需要物理交换机支持VLAN。[参考VLAN的简单介绍](http://www.choudan.net/2013/08/.html)。
+在使用LinuxBridge作为quantum的插件，实现VLAN，需要物理交换机支持VLAN。[参考VLAN的简单介绍](http://www.choudan.net/2013/08/28/OpenStack-Network学习%28二%29.html)。
 
 在实验环境中，搭建了两个节点的Openstack平台，其中gb31作为control node，gb07作为compute node节点。创建了一个vlan，现在可以比较这两个节点上网络设别的不同，网桥的差别。
 

@@ -10,6 +10,7 @@ descriptor: 列举收集的一些好文章
 ### OpenStack
 
 * [vSphere与OpenStack的集成](http://openstack-huawei.github.io/vSphere-and-openstack/)
+* [在OpenStack中使用XenServer资源池浅析](http://www.openstack.cn/p372.html)
 
 ### Nova
 

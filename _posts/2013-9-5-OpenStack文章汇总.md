@@ -12,6 +12,10 @@ descriptor: 列举收集的一些好文章
 * [vSphere与OpenStack的集成](http://openstack-huawei.github.io/vSphere-and-openstack/)
 * [在OpenStack中使用XenServer资源池浅析](http://www.openstack.cn/p372.html)
 
+### Deploy
+
+* [DevStack-in-1-minute](http://www.sebastien-han.fr/blog/2013/08/08/devstack-in-1-minute/)
+
 ### Nova
 
 * [OpenStack Availability Zone 与 Aggregate Hosts理解](http://blog.chinaunix.net/uid-20940095-id-3875022.html)

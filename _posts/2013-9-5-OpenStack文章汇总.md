@@ -34,8 +34,8 @@ descriptor: 列举收集的一些好文章
 
 ### Ceilometer
 
-* [OpenStack与监控](http:/www.ustack.com/blog/openstack_monitor/)
-* [OpenStack Ceilometer简介](http:/www.ustack.com/blog/ceilometer/)
+* [OpenStack与监控](http://www.ustack.com/blog/openstack_monitor/)
+* [OpenStack Ceilometer简介](http://www.ustack.com/blog/ceilometer/)
 
 ### Neutron
 

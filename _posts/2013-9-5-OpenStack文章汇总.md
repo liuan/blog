@@ -7,6 +7,10 @@ descriptor: 列举收集的一些好文章
 
 在学习OpenStack的过程中，看到不少好的大神写的博客，涵盖OpenStack方方面面的，在此做一个汇总，后续看到的再慢慢补充。
 
+第一篇当属UnitedStack工程师总结出的OpenStack Hacker养成指南
+
+[`OpenStack Hacker养成指南`](http://www.ustack.com/blog/page/2/)
+
 ### OpenStack
 
 * [vSphere与OpenStack的集成](http://openstack-huawei.github.io/vSphere-and-openstack/)
@@ -24,7 +28,14 @@ descriptor: 列举收集的一些好文章
 
 ### Keystone
 
+### Cinder
+
+* [Ceph架构分析](http://www.ustack.com/blog/ceph_infra/)
+
 ### Ceilometer
+
+* [OpenStack与监控](http:/www.ustack.com/blog/openstack_monitor/)
+* [OpenStack Ceilometer简介](http:/www.ustack.com/blog/ceilometer/)
 
 ### Neutron
 

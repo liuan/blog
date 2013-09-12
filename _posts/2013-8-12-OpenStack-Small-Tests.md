@@ -135,15 +135,15 @@ Mock Object则采用不同的方法来确保代码的正确性。经典的方法
 
 行为验证带一定的风险，常常我们不关心SUT的特别的行为，我们只想确定它正确的实现了需要的接口。文章再举了一个例子说明这些话，譬如改变了Order的实现。
 
-class Order(object):
-    # ...
-    def fill(self, warehouse):
-	try:
-            warehouse.remove(self._item, self._quantity)
-            self._filled = True
-        except:
-            pass
-    # ...
+    class Order(object):
+        # ...
+        def fill(self, warehouse):
+        try:
+                warehouse.remove(self._item, self._quantity)
+                self._filled = True
+            except:
+                pass
+        # ...
 
 这也是一种完美有效的方式，但是上面的代码将打破上面测试用的mock object。这可能导致迷惑，需要修改test用例。原文是这样`This might create confusion and it would certainly require making modifications to the test. Because of the tendency of to overspecify the requirements of the software, it is recommended that developers avoid mock objects and behavior verification unless it is truly necessary.` 后面一句话推荐开发者避免mock objects和行为验证。
 

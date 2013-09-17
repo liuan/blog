@@ -31,6 +31,7 @@ descriptor: 列举收集的一些好文章
 ### Cinder
 
 * [Ceph架构分析](http://www.ustack.com/blog/ceph_infra/)
+* [从OpenStack的角度看块存储](http://www.infoq.com/cn/articles/block-storage-overview)
 
 ### Ceilometer
 

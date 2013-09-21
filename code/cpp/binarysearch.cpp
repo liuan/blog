@@ -95,7 +95,7 @@ void test_binarysearch(int *array, int len){
 int main(){
     //int array[] = {1,2,3,4,5};
     //int array[] = {1,2,1,1,1,1,1};
-    int array[] = {6,0,1,3,4,4};
+    int array[] = {1,2,3,3,5,6};
     int len = sizeof(array) / sizeof(int);
     print(array,len);
     //test_rotate(array,len);

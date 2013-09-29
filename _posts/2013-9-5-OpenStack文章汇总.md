@@ -20,6 +20,11 @@ descriptor: 列举收集的一些好文章
 
 * [DevStack-in-1-minute](http://www.sebastien-han.fr/blog/2013/08/08/devstack-in-1-minute/)
 
+
+### Common
+
+* [SQlAlchemy-Migrate and Alembic: 数据库版本控制工具](http://www.ustack.com/blog/sqlalchemy-migrate-and-alembic)
+
 ### Nova
 
 * [OpenStack Availability Zone 与 Aggregate Hosts理解](http://blog.chinaunix.net/uid-20940095-id-3875022.html)
@@ -39,6 +44,8 @@ descriptor: 列举收集的一些好文章
 * [OpenStack Ceilometer简介](http://www.ustack.com/blog/ceilometer/)
 
 ### Neutron
+
+* [Neutron网络入门: 关于网络的入门介绍和简单操作演示](http://www.ustack.com/blog/neutron_intro)
 
 ### Community
 

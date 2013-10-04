@@ -20,4 +20,8 @@ tags: OpenStack
 
 > 1. [python eventlet并发原理分析](https://github.com/stanzgy/wiki/blob/master/openstack/inside-eventlet-concurrency.md)
 
+前面我们强调过，eventlet在网络方面主要依赖于python的select库，该库在windows下只支持socket，在linux支持所有的文件描述符。可以先参考以下几篇文章了解python的select库。
+
+> 1. [Python网络编程中的select和poll I/O复用的简单使用](http://www.cnblogs.com/coser/archive/2012/01/06/2315216.html)
+
 ### 正文

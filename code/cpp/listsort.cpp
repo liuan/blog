@@ -29,7 +29,8 @@ List* partition(List* start, List *end){
     while(big && big != end){
         if(big->value <= key){
             small = small->next;
-            int temp = small->value; small->value = big->value;
+            int temp = small->value;
+            small->value = big->value;
             big->value = temp;
         }
         big = big->next;

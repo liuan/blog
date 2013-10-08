@@ -5,7 +5,9 @@ tags: OpenStack
 descriptor: 列举收集的一些好文章
 ---
 
-在学习OpenStack的过程中，看到不少好的大神写的博客，涵盖OpenStack方方面面的，在此做一个汇总，后续看到的再慢慢补充。
+在学习OpenStack的过程中，看到不少好的大神写的博客，涵盖OpenStack方方面面的，在此做一个汇总，后续看到的再慢慢补充。补充：UnitedStack的官方博客应该是国内关于OpenStack干货最多最全面的网站了，全是原创，强烈推荐，下面收集的很多文章都是从该网站看到的。
+
+* [UnitedStack 官方博客](http://www.ustack.com/blog/)
 
 第一篇当属UnitedStack工程师总结出的OpenStack Hacker养成指南
 
@@ -48,6 +50,7 @@ descriptor: 列举收集的一些好文章
 ### Neutron
 
 * [Neutron网络入门: 关于网络的入门介绍和简单操作演示](http://www.ustack.com/blog/neutron_intro)
+* [Neutron网络之负载均衡](http://www.ustack.com/blog/neutron_loadbalance)
 
 ### Community
 

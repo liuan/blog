@@ -31,14 +31,12 @@ BinaryTree *maxsubtreewithpositive(BinaryTree* root, bool isnegative, int& sum){
 }
 
 void maxsubtreewithpositive(BinaryTree* root, BinaryTree** subtree, int& sum, int& curmax){
-    if(root == NULL)
+    if(!root)
         return;
     int left = 0, right = 0;
-    if(root->left != NULL)
-    //if(!root->left)
+    if(root->left)
         maxsubtreewithpositive(root->left,subtree,left,curmax);
-    if(root->right != NULL)
-    //if(!root->right)
+    if(root->right)
         maxsubtreewithpositive(root->right,subtree,right,curmax);
 
     if(root->value > 0){
@@ -55,7 +53,7 @@ void maxsubtreewithpositive(BinaryTree* root, BinaryTree** subtree, int& sum, in
 }
 
 void maxsubtree(BinaryTree* root, BinaryTree** cursubtree, int& sum, int& curmax){
-    if(root == NULL)
+    if(!root)
         return;
     int left = 0, right = 0;
     //BinaryTree *lefttree = NULL, *righttree = NULL;
@@ -86,9 +84,7 @@ void test_maxsubtreewithpositive(BinaryTree* tree){
     maxsubtreewithpositive(tree,&subtree,sum,curmax);
     cout << "curmax:" << curmax << endl;
     print(subtree);
-    cout << endl;
-    cout << "*****************************" << endl;
-    cout << endl;
+    cout << endl << endl;
 }
 
 void test_maxsubtree(BinaryTree* tree){
@@ -103,9 +99,7 @@ void test_maxsubtree(BinaryTree* tree){
     maxsubtree(tree,&subtree,sum,curmax);
     cout << "curmax:" << curmax << endl;
     print(subtree);
-    cout << endl;
-    cout << "*****************************" << endl;
-    cout << endl;
+    cout << endl << endl;
 }
 
 //BinaryTree* construct_binarytree(){

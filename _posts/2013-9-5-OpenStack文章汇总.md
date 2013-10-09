@@ -34,6 +34,7 @@ descriptor: 列举收集的一些好文章
 ### Nova
 
 * [OpenStack Availability Zone 与 Aggregate Hosts理解](http://blog.chinaunix.net/uid-20940095-id-3875022.html)
+* [虚拟机实例资源配置:server cpu，disk io bandwidth消耗限制](https://wiki.openstack.org/wiki/InstanceResourceQuota)
 
 ### Glance
 
@@ -53,6 +54,7 @@ descriptor: 列举收集的一些好文章
 
 * [Neutron网络入门: 关于网络的入门介绍和简单操作演示](http://www.ustack.com/blog/neutron_intro)
 * [Neutron网络之负载均衡](http://www.ustack.com/blog/neutron_loadbalance)
+* [虚拟机网络限速：openvswitch官方文档 QoS Rate-Limiting](http://openvswitch.org/support/config-cookbooks/qos-rate-limiting)
 
 ### Community
 

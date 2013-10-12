@@ -64,6 +64,10 @@ void problem02(int *array, int len, int target){
     cout << "max:" << dp[target] << endl;
 }
 
+void problem10(int *array, int len, int target){
+    
+}
+
 void test_problem01(){
     int array[] = {1,5,7,8,9};
     int len = sizeof(array) / sizeof(int);

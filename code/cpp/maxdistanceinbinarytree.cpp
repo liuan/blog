@@ -57,6 +57,27 @@ int maxdistanceinbinarytree(BinaryTree* tree, int& distance){
     return max(lmax,max(rmax,left+right));
 }
 
+int deepestnode(BinaryTree* tree, int& distance){
+    if(tree == NULL)
+        return 0;
+    int left = 0, right = 0;
+    if(tree->left)
+        left = deepestnode(tree->left,distance) + 1;
+    if(tree->right)
+        right = deepestnode(tree->right,distance) + 1;
+
+    if(left+right > distance)
+        distance = left + right;
+
+    return max(left,right);
+}
+
+int maxdistanceinbinarytree(BinaryTree* tree){
+    int distance = 0;
+    deepestnode(tree,distance);
+    return distance;
+}
+
 void test_distance(){
    BinaryTree a(NULL,NULL,1); 
    BinaryTree b(&a,NULL,2); 
@@ -71,7 +92,8 @@ void test_distance(){
    printbyfloor(&j);
 
    int distance = 0;
-   cout << maxdistanceinbinarytree(&j,distance) << endl;
+   cout << "v1:" << maxdistanceinbinarytree(&j,distance) << endl;
+   cout << "v2:" << maxdistanceinbinarytree(&j) << endl;
 }
 
 int main(){

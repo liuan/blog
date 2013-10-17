@@ -10,9 +10,11 @@
 ******************************************************************/
 
 #include<iostream>
+#include<iomanip>
 #include<iterator>
 #include<vector>
 #include<algorithm>
+#include<numeric>
 
 using namespace std;
 
@@ -64,28 +66,89 @@ void problem02(int *array, int len, int target){
     cout << "max:" << dp[target] << endl;
 }
 
+//dp[i][j] //表示是否可以找到i个数构成和为j
 void problem10(int *array, int len, int target){
+    if(!array || len <= 0)
+        return;
+    vector<vector<int> > dp(len+1,vector<int>(target+1,0));    
+    dp[0][0] = 1;
+    int i = 0, j = 0, k = 0;
+    for(k = 1; k <= len; ++k){
+        for(i = k; i >= 1; --i){ // 前i个数
+            for(j = 1; j <= target; ++j){
+                if(j >= array[k-1] && dp[i-1][j - array[k-1]]){
+                    dp[i][j] = 1; 
+                }
+            }
+        }
+    }
+
+    for(i = 0; i <= len; ++i){
+        for(j = 0; j <= target; ++j){
+            cout << setw(4) << dp[i][j];
+        }
+        cout << endl;
+    }
     
+    bool find = false;
+    for(i = 1; i <= len; ++i){
+        if(dp[i][target]){
+            find = true;
+            break;
+        }
+    }
+    cout << (find ? "true" : "false") << endl;
 }
 
-void test_problem01(){
-    int array[] = {1,5,7,8,9};
-    int len = sizeof(array) / sizeof(int);
+// split the array to two part;
+void problem11(int *array, int len){
+    if(!array || len <= 0)
+        return;
+    int sum = 0;
+    accumulate(array,array+len,sum);
+    vector<vector<int> > dp(len+1,vector<int>((sum>>1)+1,0)); 
+
+    vector<vector<vector<int> > > path(len+1,vector<vector<int> >((len>>1)+1, vector<int>((sum>>1)+1,0)));
+
+    dp[0][0] = 1;
+    int i, j, k;
+    for(k = 1; k <= len; ++k){
+        for(i = min(k,len>>1); i >= 1; ++i){
+            for(j = 1; j <= (sum>>1); ++j){
+                if(j > array[k-1] && dp[i-1][j - array[k]])
+                    dp[i][j] = 1;
+            }
+        }
+    }
+
+
+
+}
+
+
+void test_problem01(int *array, int len){
     print(array,len);
     int target = 11;
     problem01(array,len,target);
 }
 
-void test_problem02(){
-    int array[] = {1,5,7,8,9};
-    int len = sizeof(array) / sizeof(int);
+void test_problem02(int *array, int len){
     print(array,len);
     int target = 11;
     problem02(array,len,target);
 }
 
+void test_problem10(int *array, int len){
+    print(array,len);
+    int target = 6;
+    problem10(array,len,target);
+}
+
 int main(){
-    test_problem01();
-    test_problem02();
+    int array[] = {1,5,7,8,9};
+    int len = sizeof(array) / sizeof(int);
+    test_problem01(array, len);
+    test_problem02(array,len);
+    test_problem10(array,len);
     return 0;
 }

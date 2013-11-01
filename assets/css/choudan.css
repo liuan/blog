@@ -10,7 +10,7 @@
 body {
     word-wrap:break-word; line-height:normal;
     background:#F8F8F8 url(/assets/img/bg.jpg) repeat fixed;
-    font: 14px 'Microsoft Yahei',Tahoma,Arial,Helvetica,Simsun,STHeiti;
+    font: 15px/1.5 Arial,Helvetica,Simsun,STHeiti;
 }
 
 h1, h2, h3, h4, h5, h6 {

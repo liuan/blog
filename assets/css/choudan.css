@@ -232,6 +232,7 @@ th {
     background-color: #fff;
     padding: 10px 30px 10px 30px;
     margin: 20px auto 0;
+    border-radius: 10px;
 }
 .topic .title {
     white-space: nowrap;

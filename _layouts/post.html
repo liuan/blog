@@ -20,8 +20,17 @@
       <p>{{ page.description }}</p>
   </div>
 
-  <div class="well">
+  <div class="well well-header">
     {{ content }}
+  </div>
+
+  <div class="well well-header">
+      {%if page.previous %}
+        <a href="{{ page.previous.url }}" title="{{ page.previous.title }}">前一篇 {{ page.previous.title }}</a>
+      {% endif %}
+      {%if page.next %}
+        <a href="{{ page.next.url }}" title="{{ page.next.title }}">后一篇 {{ page.next.title }}</a>
+      {% endif %}
   </div>
 
   <!-- 底部导航条 -->

@@ -24,12 +24,12 @@
     {{ content }}
   </div>
 
-  <div class="well well-header">
-      {%if page.previous %}
-        <a href="{{ page.previous.url }}" title="{{ page.previous.title }}">前一篇 {{ page.previous.title }}</a>
-      {% endif %}
+  <div class="well well-header" style="height:20px">
       {%if page.next %}
-        <a href="{{ page.next.url }}" title="{{ page.next.title }}">后一篇 {{ page.next.title }}</a>
+        <a href="{{ page.next.url }}" title="{{ page.next.title }}" style="margin-top:0px;float:left;">前一篇: {{ page.next.title }}</a>
+      {% endif %}
+      {%if page.previous %}
+      <a href="{{ page.previous.url }}" title="{{ page.previous.title }}" style="margin-top:0px;float:right;">后一篇: {{ page.previous.title }}</a>
       {% endif %}
   </div>
 

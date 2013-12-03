@@ -99,7 +99,7 @@ options即所谓的配置选项，可以通过命令行和配置文件设置，�
 
 在config manager中，会默认的指定两个值，即`--config-file --config-dir`,config manager会在没有显示指定这两个参数的情况下去默认的文件夹中查找默认的文件。例如`~/.${project}， ~/， /etc/${project}，/etc/`这几个目录下查找配置文件，如果程序是nova，则会查找默认路径下的nova.conf文件。
 
-在代码中的注释指出，`Option values in config files override those on the command line.` 即config files中的选项值会覆盖命令行中的选项值。这貌似与潜意识中的相反呀，英文是原话。多个配置文件会按顺序来解析，后面文件中的选项会覆盖前面出现过的选项。
+在代码中的注释指出，`Option values in config files override those on the command line.` 即config files中的选项值会覆盖命令行中的选项值。这貌似与潜意识中的相反呀，英文是原话。`补充：2013-11-28，经过自己的测试和对源码的阅读，应该是Option values specified on command lines override those in config files，具体参考下一篇的分析。` 多个配置文件会按顺序来解析，后面文件中的选项会覆盖前面出现过的选项。
 
 ##### option group 
 
@@ -172,6 +172,7 @@ options即所谓的配置选项，可以通过命令行和配置文件设置，�
         server.start(app, CONF.bind_port, CONF.bind_host)
 
 ### 总结
+***********
 
 这一部分只是按照源码中的注释来介绍了下oslo.config的使用，下一篇，将分析cfg.py的代码结构，因为也只有这一个关键的文件，代码在两千行左右，任务不是很重，所以争取将其看仔细，写明白。
 
@@ -183,5 +184,5 @@ options即所谓的配置选项，可以通过命令行和配置文件设置，�
 ******
 
 1. [https://wiki.openstack.org/wiki/Oslo](https://wiki.openstack.org/wiki/Oslo) Oslo WiKi
-1. [https://wiki.openstack.org/wiki/Oslo/Config](https://wiki.openstack.org/wiki/Oslo/Config) Oslo.config WiKi
+2. [https://wiki.openstack.org/wiki/Oslo/Config](https://wiki.openstack.org/wiki/Oslo/Config) Oslo.config WiKi
 

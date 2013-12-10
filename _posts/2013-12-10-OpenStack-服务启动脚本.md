@@ -50,6 +50,7 @@ OpenStack的服务特别多，并且不同的主机根据部署规划的考虑�
 ### 示例
 ************
 
+    choudan@ubuntu:~/openstack-x.sh all start
     choudan@ubuntu:~/openstack-x.sh nova start
     choudan@ubuntu:~/openstack-x.sh nova-api start
     choudan@ubuntu:~/openstack-x.sh --add-service nova nova-conductor

@@ -24,3 +24,5 @@ tags: OpenStack
 ### 操作实战
 
 1. [OpenStack Git 操作](http://blog.csdn.net/quqi99/article/details/9425385), 高端的实战指南
+
+2. [git基本操作](http://wlog.cn/soft/git-quick-start.html)

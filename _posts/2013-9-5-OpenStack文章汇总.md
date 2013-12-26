@@ -30,6 +30,7 @@ descriptor: 列举收集的一些好文章
 * [SQlAlchemy-Migrate and Alembic: 数据库版本控制工具](http://www.ustack.com/blog/sqlalchemy-migrate-and-alembic)
 * [Greenlet模块的线程安全问题](http://www.openstack.cn/p551.html)
 * [两个greenthread共享同一个socket带来的安全问题](http://blog.eventlet.net/2010/03/18/safety/)
+* [Python标准模块logging](http://blog.csdn.net/fxjtoday/article/details/6307285)
 
 ### Nova
 

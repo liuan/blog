@@ -58,7 +58,7 @@ tags: eventlet
     about to wait
     waited for,a
 
-首先解释下，调用spawn会创建一个greenthread放入到hub中，然后使用sleep(0)从当前的greenlet切换到刚才创建的greenthread，就开始执行waiter函数，打印第一行。然后函数就在此wait了，我们前面介绍了wait会触发hub的switch方法，回到MAINLOOP的循环中，由于在每一次循环都将next_timer清空了，所有要执行的timer都添加到self.timer这个小堆中去了。在MAINLOOP中，由于这个包含timer的wait已经被执行过一次，所以下次循环时不会再执行了，sleep函数就让程序切换到了我们写的代码上来，接着运行evt.send('a'),这一行同样触发了hub的调度，接着运行到waiter阻塞的地方，我们发现，这儿send有一个很关键的作用，用来在不同的greenthread中传递结果。所以后面紧接着打印了waited for,a。最后一句sleep则从MAINLOOP的空循环中切回到我们的代码尾，然后结束。
+首先解释下，调用spawn会创建一个greenthread放入到hub中，然后使用sleep(0)从当前的greenlet切换到刚才创建的greenthread，就开始执行waiter函数，打印第一行。然后函数就在此wait了，我们前面介绍了wait会触发hub的switch方法，回到MAINLOOP的循环中，由于在每一次循环都将next_timer清空了，所有要执行的timer都添加到self.timer这个小堆中去了。在MAINLOOP中，由于这个包含timer的wait已经被执行过一次，所以下次循环时不会再执行了，sleep函数就让程序切换到了我们写的代码上来，接着运行evt.send('a'), 若存在waiter，那么send函数将会往timer中添加新的执行函数，用来将参数传递给waiter, 我们发现，这儿send有一个很关键的作用，用来在不同的greenthread中传递结果。最后一句sleep则又触发了协程间的调度执行，所以后面紧接着打印了waited for,a, 即成send传过来的值。`(谢谢网友GorSW的指出，之前这儿描述存在错误，现以修正！)`
 
 通过event，就明白了event可以用来再不同的greenthread中进行值的传递。官方文档介绍了，event和队列类似，只是event中只有一个元素，send函数能够用来唤醒正在等待的waiters，是不是和线程中的诸多概念相似了。
 

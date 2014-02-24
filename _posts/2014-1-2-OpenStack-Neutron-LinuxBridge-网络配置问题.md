@@ -52,7 +52,7 @@ tags: OpenStack
 
     iptables -t raw -A OUTPUT -p udp -j TRACE
     iptables -t raw -A PREROUTING -p udp -j TRACE
-    mobprobe ipt_LOG
+    modprobe ipt_LOG
 
 然而，前面说了，在havana-01网络节点上的虚拟机就丝毫不受影响，特意查看了它的iptables，结果很为惊讶，控制节点的规则和计算节点的规则都一样的呀，按道理说，虚拟机也应该接收不到呀。在虚拟机网卡挂载的网桥上抓包，发现dhcp server返回的包的src也修改成了10.10.92.2，和计算节点的一模一样呀！在虚拟机的网卡上抓包，发现它已经接收到了dhcp server发过来的包！为什么同样的规则，却得到不同的结果了。通过同样的方式查看iptables的日志，竟然没有看到和ip地址是10.10.92.2相关的记录。
 

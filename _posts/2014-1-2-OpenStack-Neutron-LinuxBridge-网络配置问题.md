@@ -62,7 +62,7 @@ tags: OpenStack
 
 <img src="/assets/img/openstack_network_iptables02.png">
 
-从上图和结合iptables的日志，我们知道，若包是从外部接收的，那么就是从最初的raw表的PREROUTING链开始处理，若包是从内部发出的，则由Routing Decision之后，从raw表的OUTPUT链走，所以在havana-02节点上，包是从最顶上开始，然后走filter的链进行过滤，根据iptables的规则把包给过滤掉了，而在havana-02中，包从dnsmasq进程发出，首先通过的就是raw的 OUTPUT链，然后通过最后的nat进行了转换，也就是我们在抓包中看到的包的src地址变成了10.10.92.2的情况，最后发出去，由于包已经发出去，到了brq-xxx，则就直接转发到挂载在上面的虚拟机网卡，虚拟机则接收到了dhcp server的ack包，因此获取ip地址正常。
+从上图和结合iptables的日志，我们知道，若包是从外部接收的，那么就是从最初的raw表的PREROUTING链开始处理，若包是从内部发出的，则由Routing Decision之后，从raw表的OUTPUT链走，所以在havana-02节点上，包是从最顶上开始，然后走filter的链进行过滤，根据iptables的规则把包给过滤掉了，而在havana-01中，包从dnsmasq进程发出，首先通过的就是raw的 OUTPUT链，然后通过最后的nat进行了转换，也就是我们在抓包中看到的包的src地址变成了10.10.92.2的情况，最后发出去，由于包已经发出去，到了brq-xxx，则就直接转发到挂载在上面的虚拟机网卡，虚拟机则接收到了dhcp server的ack包，因此获取ip地址正常。
 
 现在问题很清晰了，是由于计算节点的iptables将dhcp的包给拦截了，因此问题就在于为什么会被拦截了？这是什么原因导致的。我们就知道主要在iptables，那么怎样去改变这个iptables了，简单的手动删除或者修改某条规则肯定是不可取的。在创建虚拟机的时候，我们知道虚拟机会属于某个默认的security group，那么可以去修改这个security group去改变iptables的规则。
 

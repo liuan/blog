@@ -129,6 +129,7 @@ OpenStack大部分的project都会附有一个api的server，例如nova-api，gl
             if not match:
                 return webob.exc.HTTPNotFound()
             app = match['controller']
+            return app
      
 第四步，我们看看如何构造url到resource的映射。router.py文件如下：
 

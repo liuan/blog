@@ -57,6 +57,10 @@ descriptor: 列举收集的一些好文章
 * [Neutron网络之负载均衡](http://www.ustack.com/blog/neutron_loadbalance)
 * [虚拟机网络限速：openvswitch官方文档 QoS Rate-Limiting](http://openvswitch.org/support/config-cookbooks/qos-rate-limiting)
 
+### Heat
+
+* [Heat HA: 介绍借助Heat来实现OpenStack Heat的思想](http://kiwik.github.io/openstack/2014/03/22/Heat-HA/)
+
 ### Community
 
 `OpenStack社区的一些文章`

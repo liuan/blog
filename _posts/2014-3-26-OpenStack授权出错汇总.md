@@ -4,7 +4,8 @@ category: OpenStack
 tags: OpenStack
 ---
 
-### 1
+### 1 Authentication required
+--------
 
 问题描述：原本正常运行好多天的平台从昨天磁盘满删掉些占空间的文件之后，出现各种奇怪的问题。其中之一就是，执行neutron命令提示`Authentication required`。其他project的命令没任何问题，奇了怪了！ 
 

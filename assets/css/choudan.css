@@ -22,7 +22,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1{
     font-weight: 900;
-    font-size: 36px;
+    font-size: 29px;
     margin: 20px 0;
 }
 
@@ -82,7 +82,7 @@ hr{
 code{
     padding: 2px 4px;
     color: #d14;
-    background-color: #f7f7f9;
+    background-color: #eee;
     border: 1px solid #e1e1e8;
 }
 

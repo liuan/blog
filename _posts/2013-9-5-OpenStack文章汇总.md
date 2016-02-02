@@ -13,7 +13,7 @@ descriptor: 列举收集的一些好文章
 
 第一篇当属UnitedStack工程师总结出的OpenStack Hacker养成指南
 
-[`OpenStack Hacker养成指南`](http://www.ustack.com/blog/page/2/)
+[`OpenStack Hacker养成指南`](https://www.ustack.com/blog/openstack_hacker/)
 
 ### OpenStack
 

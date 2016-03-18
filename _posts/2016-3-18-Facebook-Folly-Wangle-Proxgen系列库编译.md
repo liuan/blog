@@ -75,13 +75,13 @@ Wangle 是采用的cmake来编译，查看Wangle的CMakeLists.txt会发现，Wan
 ### Proxygen 编译
 -----------------
 
-解决wangle编译之后，开始处理Proxygen，由于已经安装好了folly和wangle，因此不需要完全按照Proxygen下的deps.sh 来操作，直接到deps.sh的末尾就可以了
+解决wangle编译之后，开始处理Proxygen，由于已经安装好了folly和wangle，因此不需要完全按照Proxygen下的deps.sh 来操作，直接到deps.sh的末尾就可以了，编译的过程也会下载gmock，默认的下载路径在googlecode上，因此我直接先注释处理，在lib/test/Makefile中，注释gmock的两行
 
 * autoreconf -ivf
 * LDFLAGS="-L/home/choudan/code/common/lib" CPPFLAGS="-I/home/choudan/code/common/include -I/home/choudan/code/common/include/libevent -fPIC -g -lpthread -levent -lglog -lgflags" ./configure  --prefix=/home/choudan/code/common/proxygen/ --exec-prefix=/home/choudan/code/common/proxygen/  --disable-shared
 * make && make install
 
-在链接的过程中间，遇到一个奇怪的问题，找不到event库中的符号，后面查看编译命令，发现时event库在链接的先后顺序中先于folly库，因此folly库没法找到相应符号。只有强行在configure 文件中把wangle和folly提前，再编译搞定。
+在链接的过程中间，遇到一个奇怪的问题，找不到event库中的符号，后面查看编译时的命令，发现时event库在链接的先后顺序中先于folly库，因此folly库没法找到相应符号。只有强行在configure 文件中把wangle和folly提前，再编译搞定。
 
 
 ### 后述
